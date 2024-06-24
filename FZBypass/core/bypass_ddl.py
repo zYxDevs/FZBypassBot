@@ -1,3 +1,4 @@
+from requests import post as rpost ,get as rget
 from re import findall, compile
 from time import sleep, time
 from asyncio import sleep as asleep
@@ -13,58 +14,10 @@ from FZBypass import Config
 from FZBypass.core.exceptions import DDLException
 from FZBypass.core.recaptcha import recaptchaV3
 
-
 async def get_readable_time(seconds):
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     return f"{hours}h{minutes}m{seconds}s"
-
-
-async def uptobox(url):
-    try:
-        link = findall(r"\bhttps?://.*uptobox\.com\S+", url)[0]
-    except IndexError:
-        raise DDLException("No Uptobox links found")
-
-    if link := findall(r"\bhttps?://.*\.uptobox\.com/dl\S+", url):
-        return link[0]
-
-    try:
-        file_id = findall(r"\bhttps?://.*uptobox\.com/(\w+)", url)[0]
-        if UPTOBOX_TOKEN := Config.UPTOBOX_TOKEN:
-            file_link = f"https://uptobox.com/api/link?token={UPTOBOX_TOKEN}&file_code={file_id}"
-        else:
-            file_link = f"https://uptobox.com/api/link?file_code={file_id}"
-    except Exception as e:
-        raise DDLException(f"{e.__class__.__name__}")
-
-    async with ClientSession() as session:
-        try:
-            async with session.get(file_link) as response:
-                res = await response.json()
-        except Exception as e:
-            raise DDLException(f"{e.__class__.__name__}")
-
-        if res["statusCode"] == 0:
-            return res["data"]["dlLink"]
-        elif res["statusCode"] == 16:
-            sleep(1)
-            waiting_token = res["data"]["waitingToken"]
-            await asleep(res["data"]["waiting"])
-        elif res["statusCode"] == 39:
-            readable_time = await get_readable_time(res["data"]["waiting"])
-            raise DDLException(f"Uptobox is being Limited. Please wait {readable_time}")
-        else:
-            raise DDLException(f"{res['message']}")
-
-        try:
-            async with session.get(
-                f"{file_link}&waitingToken={waiting_token}"
-            ) as response:
-                res = await response.json()
-            return res["data"]["dlLink"]
-        except Exception as e:
-            raise DDLException(f"ERROR: {e.__class__.__name__}")
 
 
 async def yandex_disk(url: str) -> str:
@@ -78,7 +31,7 @@ async def yandex_disk(url: str) -> str:
         raise DDLException("File not Found / Download Limit Exceeded")
 
 
-async def mediafire(url: str) -> str:
+async def mediafire(url: str):
     if final_link := findall(
         r"https?:\/\/download\d+\.mediafire\.com\/\S+\/\S+\/\S+", url
     ):
@@ -93,6 +46,10 @@ async def mediafire(url: str) -> str:
         r"\'(https?:\/\/download\d+\.mediafire\.com\/\S+\/\S+\/\S+)\'", page
     ):
         return final_link[0]
+    elif temp_link := findall(
+        r'\/\/(www\.mediafire\.com\/file\/\S+\/\S+\/file\?\S+)', page
+    ):
+        return await mediafire("https://"+temp_link[0].strip('"'))
     else:
         raise DDLException("No links found in this page")
 
@@ -158,53 +115,53 @@ async def terabox(url: str) -> str:
     except:
         raise DDLException("Link Extraction Failed")
 
-
 async def try2link(url: str) -> str:
-    cget = create_scraper(allow_brotli=False).request
-    url = url.rstrip("/")
-    res = cget(
-        "GET",
-        url,
-        params=(("d", int(time()) + (60 * 4)),),
-        headers={"Referer": "https://to-travel.net/"},
-    )
-    soup = BeautifulSoup(res.text, "html.parser")
-    inputs = soup.find(id="go-link").find_all(name="input")
-    data = {inp.get("name"): inp.get("value") for inp in inputs}
-    await asleep(7)
-    headers = {
-        "Host": "try2link.com",
-        "X-Requested-With": "XMLHttpRequest",
-        "Origin": "https://try2link.com",
-        "Referer": url,
-    }
-    resp = cget("POST", "https://try2link.com/links/go", headers=headers, data=data)
-    try:
-        return resp.json()["url"]
-    except:
-        raise DDLException("Link Extraction Failed")
+    DOMAIN = 'https://try2link.com'
+    code = url.split('/')[-1]
+
+    async with ClientSession() as session:
+        referers = ['https://hightrip.net/', 'https://to-travel.netl', 'https://world2our.com/']
+        for referer in referers:
+            async with session.get(f'{DOMAIN}/{code}', headers={"Referer": referer}) as res:
+                if res.status == 200:
+                    html = await res.text()
+                    break
+        soup = BeautifulSoup(html, "html.parser")
+        inputs = soup.find(id="go-link").find_all(name="input")
+        data = { input.get('name'): input.get('value') for input in inputs }
+        await asleep(6)
+        async with session.post(f"{DOMAIN}/links/go", data=data, headers={ "X-Requested-With": "XMLHttpRequest" }) as resp:
+            if 'application/json' in resp.headers.get('Content-Type'):
+                json_data = await resp.json()  
+                try:
+                    return json_data['url']
+                except:        
+                    raise DDLException("Link Extraction Failed")
 
 
 async def gyanilinks(url: str) -> str:
-    DOMAIN = "https://go.hipsonyc.com/"
-    cget = create_scraper(allow_brotli=False).request
-    code = url.rstrip("/").split("/")[-1]
-    soup = BeautifulSoup(cget("GET", f"{DOMAIN}/{code}").content, "html.parser")
-    try:
-        inputs = soup.find(id="go-link").find_all(name="input")
-    except:
-        raise DDLException("Incorrect Link Provided")
-    await asleep(5)
-    resp = cget(
-        "POST",
-        f"{DOMAIN}/links/go",
-        data={input.get("name"): input.get("value") for input in inputs},
-        headers={"x-requested-with": "XMLHttpRequest"},
-    )
-    try:
-        return resp.json()["url"]
-    except:
-        raise DDLException("Link Extraction Failed")
+    '''
+    Based on https://github.com/whitedemon938/Bypass-Scripts
+    '''
+    code = url.split('/')[-1]
+    useragent = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
+    DOMAIN = "https://go.bloggingaro.com"
+    
+    async with ClientSession() as session:
+        async with session.get(f"{DOMAIN}/{code}", headers={'Referer':'https://tech.hipsonyc.com/','User-Agent': useragent}) as res:
+            cookies = res.cookies
+            html = await res.text()
+        async with session.get(f"{DOMAIN}/{code}", headers={'Referer':'https://hipsonyc.com/','User-Agent': useragent}, cookies=cookies) as resp:
+            html = await resp.text()
+        soup = BeautifulSoup(html, 'html.parser')
+        data = {inp.get('name'): inp.get('value') for inp in soup.find_all('input')}
+        await asleep(5)
+        async with session.post(f"{DOMAIN}/links/go", data=data, headers={'X-Requested-With':'XMLHttpRequest','User-Agent': useragent, 'Referer': f"{DOMAIN}/{code}"}, cookies=cookies) as links:
+            if 'application/json' in links.headers.get('Content-Type'):
+                try:
+                    return (await links.json())['url']
+                except Exception:
+                      raise DDLException("Link Extraction Failed")
 
 
 async def ouo(url: str):
@@ -243,7 +200,10 @@ async def ouo(url: str):
     return res.headers.get("Location")
 
 
-async def mdisk(url: str) -> str:  # Depreciated ( Code Preserved )
+async def mdisk(url: str) -> str:
+    """
+    Depreciated ( Code Preserved )
+    """
     header = {
         "Accept": "*/*",
         "Accept-Language": "en-US,en;q=0.5",
@@ -258,43 +218,59 @@ async def mdisk(url: str) -> str:  # Depreciated ( Code Preserved )
 
 async def transcript(url: str, DOMAIN: str, ref: str, sltime) -> str:
     code = url.rstrip("/").split("/")[-1]
-    cget = create_scraper(allow_brotli=False).request
-    resp = cget("GET", f"{DOMAIN}/{code}", headers={"referer": ref})
-    soup = BeautifulSoup(resp.content, "html.parser")
-    data = {inp.get("name"): inp.get("value") for inp in soup.find_all("input")}
-    await asleep(sltime)
-    resp = cget(
-        "POST",
-        f"{DOMAIN}/links/go",
-        data=data,
-        headers={"x-requested-with": "XMLHttpRequest"},
-    )
-    try:
-        return resp.json()["url"]
-    except:
-        raise DDLException("Link Extraction Failed")
+    useragent = 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36'
+
+    async with ClientSession() as session:
+         async with session.get(f"{DOMAIN}/{code}", headers={'Referer': ref, 'User-Agent': useragent}) as res:
+             html = await res.text()
+             cookies = res.cookies
+         soup = BeautifulSoup(html, "html.parser")
+         title_tag = soup.find('title')
+         if title_tag and title_tag.text == 'Just a moment...':
+             return "Unable To Bypass Due To Cloudflare Protected"
+         else:
+             data = {inp.get('name'): inp.get('value') for inp in soup.find_all('input') if inp.get('name') and inp.get('value')}
+             await asleep(sltime)
+             async with session.post(f"{DOMAIN}/links/go", data=data, headers={'Referer': f"{DOMAIN}/{code}", 'X-Requested-With':'XMLHttpRequest', 'User-Agent': useragent}, cookies=cookies) as resp:
+                  try:
+                      if 'application/json' in resp.headers.get('Content-Type'):
+                          return (await resp.json())['url']
+                  except Exception:
+                      raise DDLException("Link Extraction Failed")
+
+
+async def justpaste(url: str):
+    resp = rget(url, verify=False)
+    soup = BeautifulSoup(resp.text, "html.parser")
+    inps = soup.select('div[id="articleContent"] > p')
+    return ", ".join(elem.string for elem in inps)
+    
+
+async def linksxyz(url: str):
+    resp = rget(url)
+    soup = BeautifulSoup(resp.text, "html.parser")
+    inps = soup.select('div[id="redirect-info"] > a')
+    return inps[0]["href"]
 
 
 async def shareus(url: str) -> str:
-    DOMAIN = "https://us-central1-my-apps-server.cloudfunctions.net"
-    cget = create_scraper().request
-    params = {
-        "shortid": url.rstrip("/").split("/")[-1],
-        "initial": "true",
-        "referrer": "https://shareus.io/",
-    }
+    DOMAIN = f"https://api.shrslink.xyz"
+    code = url.split('/')[-1]
     headers = {
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+        'User-Agent':'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
+        'Origin':'https://shareus.io',
     }
-    resp = cget("GET", f"{DOMAIN}/v", params=params, headers=headers)
-    for page in range(1, 4):
-        resp = cget("POST", f"{DOMAIN}/v", headers=headers, json={"current_page": page})
-    try:
-        return (cget("GET", f"{DOMAIN}/get_link", headers=headers).json())["link_info"][
-            "destination"
-        ]
-    except:
-        raise DDLException("Link Extraction Failed")
+    api = f"{DOMAIN}/v?shortid={code}&initial=true&referrer="
+    id = rget(api, headers=headers).json()['sid']
+    if id:
+        api_2 = f"{DOMAIN}/get_link?sid={id}"
+        res = rget(api_2, headers=headers)
+        if res:
+            return res.json()['link_info']['destination']
+        else:
+            raise DDLException("Link Extraction Failed")
+    else:
+        raise DDLException("ID Error")     
 
 
 async def dropbox(url: str) -> str:

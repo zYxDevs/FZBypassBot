@@ -68,19 +68,38 @@ async def direct_link_checker(link, onlylink=False):
     # DDL Links
     elif bool(match(r"https?:\/\/try2link\.\S+", link)):
         blink = await try2link(link)
-    elif bool(match(r"https?:\/\/ronylink\.\S+", link)):
-        blink = await transcript(
-            link, "https://go.ronylink.com/", "https://livejankari.com/", 9
-        )
     elif bool(match(r"https?:\/\/(gyanilinks|gtlinks)\.\S+", link)):
         blink = await gyanilinks(link)
+        
+    elif bool(match(r"https?:\/\/adrinolinks\.\S+", link)):
+        blink = await transcript(
+            link, "https://adrinolinks.in", "https://bhojpuritop.in/", 8
+        )
+    elif bool(match(r"https?:\/\/adsfly\.\S+", link)):
+        blink = await transcript(
+            link, "https://go.adsfly.in/", "https://letest25.co/", 3
+        )
+    elif bool(match(r"https?:\/\/(.+\.)?anlinks\.\S+", link)):
+        blink = await transcript(
+            link, "https://anlinks.in/", "https://dsblogs.fun/", 8
+        )
+    
+    elif bool(match(r"https?:\/\/ronylink\.\S+", link)):
+        blink = await transcript(
+            link, "https://go.ronylink.com/", "https://livejankari.com/", 3
+        )
+    
+    elif bool(match(r"https?:\/\/.+\.evolinks\.\S+", link)):
+        blink = await transcript(
+            link, "https://ads.evolinks.in/" , link, 3
+        )
     elif bool(match(r"https?:\/\/.+\.tnshort\.\S+", link)):
         blink = await transcript(
-            link, "https://go.tnshort.net/", "https://jrlinks.in/", 4
+            link, "https://news.sagenews.in/", "https://movies.djnonstopmusic.in/", 5
         )
     elif bool(match(r"https?:\/\/(xpshort|push.bdnewsx|techymozo)\.\S+", link)):
         blink = await transcript(
-            link, "https://techymozo.com/", "https://portgyaan.in/", 8
+            link, "https://xpshort.com/", "https://www.comptegratuite.com/", 4.9
         )
     elif bool(match(r"https?:\/\/go.lolshort\.\S+", link)):
         blink = await transcript(
@@ -102,10 +121,6 @@ async def direct_link_checker(link, onlylink=False):
         blink = await transcript(
             link, "https://tinyfy.in", "https://www.yotrickslog.tech/", 0
         )
-    elif bool(match(r"https?:\/\/adrinolinks\.\S+", link)):
-        blink = await transcript(
-            link, "https://adrinolinks.in", "https://bhojpuritop.in/", 8
-        )
     elif bool(match(r"https?:\/\/krownlinks\.\S+", link)):
         blink = await transcript(
             link, "https://go.hostadviser.net/", "blog.hostadviser.net/", 8
@@ -120,14 +135,14 @@ async def direct_link_checker(link, onlylink=False):
         )
     elif bool(match(r"https?:\/\/m.easysky\.\S+", link)):
         blink = await transcript(
-            link, "https://techy.veganab.co/", "https://veganab.co/", 8
+            link, "https://techy.veganab.co/", "https://camdigest.com/", 5
         )
         blink = await transcript(
             link, "https://vip.linkbnao.com", "https://ffworld.xyz/", 2
         )
     elif bool(match(r"https?:\/\/.+\.tnlink\.\S+", link)):
         blink = await transcript(
-            link, "https://go.tnshort.net/", "https://market.finclub.in/", 0.8
+            link, "https://news.sagenews.in/", "https://knowstuff.in/", 5
         )
     elif bool(match(r"https?:\/\/link4earn\.\S+", link)):
         blink = await transcript(
@@ -147,7 +162,7 @@ async def direct_link_checker(link, onlylink=False):
         )
     elif bool(match(r"https?:\/\/mdisk\.\S+", link)):
         blink = await transcript(
-            link, "https://mdisk.pro", "https://m.meclipstudy.in/", 8
+            link, "https://mdisk.pro", "https://www.meclipstudy.in/", 5
         )
     elif bool(match(r"https?:\/\/(pkin|go.paisakamalo)\.\S+", link)):
         blink = await transcript(
@@ -155,17 +170,16 @@ async def direct_link_checker(link, onlylink=False):
         )
     elif bool(match(r"https?:\/\/linkpays\.\S+", link)):
         blink = await transcript(
-            link,
-            "https://tech.smallinfo.in/Gadget/",
-            "https://finance.filmypoints.in/",
-            6,
+            link, "https://tech.smallinfo.in/Gadget/", "https://finance.filmypoints.in/", 6
         )
     elif bool(match(r"https?:\/\/sklinks\.\S+", link)):
         blink = await transcript(
             link, "https://sklinks.in", "https://dailynew.online/", 5
         )
     elif bool(match(r"https?:\/\/link1s\.\S+", link)):
-        blink = await transcript(link, "https://link1s.com", "https://anhdep24.com/", 9)
+        blink = await transcript(
+            link, "https://link1s.com", "https://anhdep24.com/", 9
+        )
     elif bool(match(r"https?:\/\/tulinks\.\S+", link)):
         blink = await transcript(
             link, "https://tulinks.one", "https://www.blogger.com/", 8
@@ -183,7 +197,9 @@ async def direct_link_checker(link, onlylink=False):
             link, "https://indyshare.net", "https://insurancewolrd.in/", 3.1
         )
     elif bool(match(r"https?:\/\/linkyearn\.\S+", link)):
-        blink = await transcript(link, "https://linkyearn.com", "https://gktech.uk/", 5)
+        blink = await transcript(
+            link, "https://linkyearn.com", "https://gktech.uk/", 5
+        )
     elif bool(match(r"https?:\/\/earn4link\.\S+", link)):
         blink = await transcript(
             link, "https://m.open2get.in/", "https://ezeviral.com/", 8
@@ -192,13 +208,13 @@ async def direct_link_checker(link, onlylink=False):
         blink = await transcript(
             link, "https://go.linksly.co/", "https://en.themezon.net/", 5
         )
-    elif bool(match(r"https?:\/\/.+\.mdiskshortner\.\S+", link)):
+    elif bool(match(r"https?:\/\/(.+\.)?mdiskshortner\.\S+", link)):
         blink = await transcript(
-            link, "https://loans.yosite.net/", "https://yosite.net/", 10
+            link, "https://mdiskshortner.link", "https://yosite.net/", 0
         )
     elif bool(match(r"https?://(?:\w+\.)?rocklinks\.\S+", link)):
         blink = await transcript(
-            link, "https://insurance.techymedies.com/", "https://blog.disheye.com/", 5
+            link, "https://land.povathemes.com/", "https://blog.disheye.com/", 4.9
         )
     elif bool(match(r"https?:\/\/mplaylink\.\S+", link)):
         blink = await transcript(
@@ -220,10 +236,7 @@ async def direct_link_checker(link, onlylink=False):
         blink = await transcript(
             link, "https://getlink.sxslink.com/", "https://cinemapettai.in/", 5
         )
-    elif bool(match(r"https?:\/\/ziplinker\.\S+", link)):
-        blink = await transcript(
-            link, "https://ziplinker.net/web/", "https://ontechhindi.com/", 5
-        )
+    
     elif bool(match(r"https?:\/\/moneycase\.\S+", link)):
         blink = await transcript(
             link, "https://last.moneycase.link/", "https://www.infokeeda.xyz/", 3.1
@@ -237,8 +250,10 @@ async def direct_link_checker(link, onlylink=False):
             link, "https://happyfiles.dtglinks.in/", "https://tech.filohappy.in/", 5
         )
     elif bool(match(r"https?:\/\/v2links\.\S+", link)):
-        blink = await transcript(link, "https://vzu.us/", "https://newsbawa.com/", 5)
-    elif bool(match(r"https?:\/\/kpslink\.\S+", link)):
+        blink = await transcript(
+            link, "https://vzu.us/", "https://newsbawa.com/", 5
+        )
+    elif bool(match(r"https?:\/\/(.+\.)?kpslink\.\S+", link)):
         blink = await transcript(
             link, "https://kpslink.in/", "https://infotamizhan.xyz/", 3.1
         )
@@ -268,10 +283,7 @@ async def direct_link_checker(link, onlylink=False):
         )
     elif bool(match(r"https?:\/\/dalink\.\S+", link)):
         blink = await transcript(
-            link,
-            "https://get.tamilhit.tech/MR-X/tamil/",
-            "https://www.tamilhit.tech/",
-            8,
+            link, "https://get.tamilhit.tech/MR-X/tamil/", "https://www.tamilhit.tech/", 8
         )
     elif bool(match(r"https?:\/\/.+\.omnifly\.\S+", link)):
         blink = await transcript(
@@ -283,7 +295,7 @@ async def direct_link_checker(link, onlylink=False):
         )
     elif bool(match(r"https?:\/\/bindaaslinks\.\S+", link)):
         blink = await transcript(
-            link, "https://thebindaas.com/blog/", "https://blog.appsinsta.com/", 5
+            link, "https://appsinsta.com/blog", "https://pracagov.com/", 3
         )
     elif bool(match(r"https?:\/\/viplinks\.\S+", link)):
         blink = await transcript(
@@ -305,23 +317,17 @@ async def direct_link_checker(link, onlylink=False):
         blink = await transcript(
             link, "https://insurance.yosite.net/", "https://yosite.net/", 10
         )
-    elif bool(match(r"https?:\/\/.+\.anlinks\.\S+", link)):
-        blink = await transcript(link, "https://anlinks.in/", "https://dsblogs.fun/", 5)
     elif bool(match(r"https?:\/\/.+\.earn2me\.\S+", link)):
         blink = await transcript(
             link, "https://blog.filepresident.com/", "https://easyworldbusiness.com/", 5
         )
     elif bool(match(r"https?:\/\/.+\.vplinks\.\S+", link)):
         blink = await transcript(
-            link, "https://get.vplinks.in/", "https://infotamizhan.xyz/", 5
+            link, "https://vplink.in", "https://insurance.findgptprompts.com/", 5
         )
     elif bool(match(r"https?:\/\/.+\.narzolinks\.\S+", link)):
         blink = await transcript(
             link, "https://go.narzolinks.click/", "https://hydtech.in/", 5
-        )
-    elif bool(match(r"https?:\/\/adsfly\.\S+", link)):
-        blink = await transcript(
-            link, "https://go.adsfly.in/", "https://loans.quick91.com/", 5
         )
     elif bool(match(r"https?:\/\/earn2short\.\S+", link)):
         blink = await transcript(
@@ -336,21 +342,44 @@ async def direct_link_checker(link, onlylink=False):
             link, "https://linkjust.com/", "https://forexrw7.com/", 3.1
         )
     elif bool(match(r"https?:\/\/pdiskshortener\.\S+", link)):
-        blink = await transcript(link, "https://pdiskshortener.com/", "", 10)
-
+        blink = await transcript(
+            link, "https://pdiskshortener.com/", "", 10
+        )
+    elif bool(match(r"https?:\/\/publicearn\.\S+", link)):
+        blink = await transcript(
+            link, "https://publicearn.com/", "https://careersides.com/", 4.9
+        )
+    elif bool(match(r"https?:\/\/modijiurl\.\S+", link)):
+        blink = await transcript(
+            link, "https://modijiurl.com/", "https://loanoffering.in/", 8
+        )
+    elif bool(match(r"https?:\/\/linkshortx\.\S+", link)):
+        blink = await transcript(
+            link, "https://linkshortx.in/", "https://nanotech.org.in/", 4.9
+        )
+    elif bool(match(r"https?:\/\/.+\.shorito\.\S+", link)):
+        blink = await transcript(
+            link, "https://go.shorito.com/", "https://healthgo.gorating.in/", 8
+        )
+    elif bool(match(r"https?:\/\/pdisk\.\S+", link)):
+        blink = await transcript(
+            link, "https://last.moneycase.link/", "https://www.webzeni.com/", 4.9
+        )
+    elif bool(match(r"https?:\/\/ziplinker\.\S+", link)):
+        blink = await transcript(
+            link, "https://ziplinker.net", "https://fintech.techweeky.com/", 1
+        )
     elif bool(match(r"https?:\/\/ouo\.\S+", link)):
         blink = await ouo(link)
     elif bool(match(r"https?:\/\/(shareus|shrs)\.\S+", link)):
         blink = await shareus(link)
     elif bool(match(r"https?:\/\/(.+\.)?dropbox\.\S+", link)):
         blink = await dropbox(link)
-    elif bool(match(r"https?:\/\/uptobox\.\S+", link)):
-        blink = await uptobox(link)
     elif bool(match(r"https?:\/\/linkvertise\.\S+", link)):
         blink = await linkvertise(link)
     elif bool(match(r"https?:\/\/rslinks\.\S+", link)):
         blink = await rslinks(link)
-    elif bool(match(r"https?:\/\/(bit|tinyurl|(.+\.)short|shorturl)\.\S+", link)):
+    elif bool(match(r"https?:\/\/(bit|tinyurl|(.+\.)short|shorturl|t)\.\S+", link)):
         blink = await shorter(link)
     elif bool(match(r"https?:\/\/appurl\.\S+", link)):
         blink = await appurl(link)
@@ -358,6 +387,10 @@ async def direct_link_checker(link, onlylink=False):
         blink = await surl(link)
     elif bool(match(r"https?:\/\/thinfi\.\S+", link)):
         blink = await thinfi(link)
+    elif bool(match(r"https?:\/\/justpaste\.\S+", link)):
+        blink = await justpaste(link)
+    elif bool(match(r"https?:\/\/linksxyz\.\S+", link)):
+        blink = await linksxyz(link)
 
     # DL Sites
     elif bool(match(r"https?:\/\/cinevood\.\S+", link)):

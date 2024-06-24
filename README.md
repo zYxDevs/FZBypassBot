@@ -19,14 +19,14 @@
 - _Use in Google Collab for Demo_
   > **Downside:** Multi Thread Bypass Not Supported
 
-<a target="_blank" href="https://github.com/SilentDemonSD/FZBypassBot/blob/main/FZNotebook/fzbypasser.ipynb">
+<a target="_blank" href="https://colab.research.google.com/github/SilentDemonSD/FZBypassBot/blob/main/FZNotebook/fzbypasser.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
 ---
 
 ## ***Features***
-- _Fastest written in Async_
+- _Fastest written in Async with Speed Enhancers_
 - _LoopBypass V1 (Auto Bypass Nested Shorteners)_
 - _Build with Simultaneously Bypass Method_
 - _Supported for Authorized Chats & Topics_
@@ -46,121 +46,135 @@
 <details>
     <summary>Shortening Sites<sup><kbd>Click Here to Expand</kbd></sup></summary>
 
-| __Shortener Sites__ | __Status__ |
-|:--------------------:|:----------:|
-|`ronylink.com`|✅️|
-|`tinyfy.in`|✅️|
-|`xpshort.com` + `push.bdnewsx.com` + `techymozo.com`|❌|
-|`gtlinks.me` + `gyanilinks.com`|❌️|
-|`earn.moneykamalo.com`|✅️|
-|`droplink.co`|✅️|
-|`adrinolinks.com`|✅️|
-|`krownlinks.me`|✅️|
-|`du-link.in` + `dulink.in`|✅️|
-|`onepagelink.in`|✅️|
-|`link.tnshort.net`|✅️|
-|`go.lolshort.tech`|❌️|
-|`indianshortner.in`|✅️|
-|`rslinks.net`|❌️|
-|`m.easysky.in`|❌️|
-|`linkbanao.com`|❌️|
-|`linkvertise.com`|️❌️|
-|`link.tnlink.in`|️✅️|
-|`link4earn.com` + `link4earn.in`|✅️|
-|`shortingly.com`|️✅️|️
-|`short2url.in`|✅️|
-|`urlsopen.com`|✅️|
-|`mdisk.pro`|✅️|
-|`ouo.io` + `ouo.press`|✅️|
-|`www.dropbox.com`|✅️|
-|`disk.yandex.ru` + `yandex.com`|✅️|
-|`try2link.com`|✅️|
-|`linkpays.in`|✅️|
-|`pkin.me` + `go.paisakamalo.in`|✅️|
-|`sklinks.in` + `sklinks.tech`|✅️|
-|`link1s.com`|✅️|
-|`tulinks.one` + `go.tulinks.online` + `tulinks.online`|✅️|
-|`link.vipurl.in` + `vipurl.in` + `count.vipurl.in`|✅️|
-|`v2links.com`|️❌️|
-|`indyshare.net`|✅️|
-|`bit.ly` + `tinyurl.com` + `*.short.gy` + `shorturl.ac`|✅️|
-|`linkyearn.com`|❌️|
-|`earn4link.in`|✅️|
-|`linksly.co`|✅️|
-|`download.mdiskshortner.link`|✅️|
-|`shrdsk.me`|️️✅️|
-|`mediafire.com`|✅️|
-|`terabox.*` + `terabox.*` + `nephobox.*` + `4funbox.*` + `mirrobox.*` + `momerybox.*` + `teraboxapp.*`|✅️|
-|`rocklinks.net`|✅️|
-|`mplaylink.com`|️❌️|
-|`shrinke.me`|✅️|
-|`urlspay.in`|✅️|
-|`short.tnvalue.in`|✅️|
-|`sxslink.com`|✅️|
-|`ziplinker.net`|✅️|
-|`moneycase.link`|✅️|
-|`urllinkshort.in`|✅️|
-|`dtglinks.in`|✅️|
-|`kpslink.in`|✅️|
-|`v2.kpslink.in`|✅️|
-|`tamizhmasters.com`|⚠️|
-|`tglink.in`|✅️|
-|`pandaznetwork.com`|✅️|
-|`url4earn.in`|✅️|
-|`ez4short.com`|✅️|
-|`dalink.in`|✅️|
-|`omnifly.in.net`|✅️|
-|`sheralinks.com`|✅️|
-|`bindaaslinks.com`|✅️|
-|`viplinks.io`|️⚠️|
-|`short2url.in`|✅️|
-|`shrinkforearn.xyz`|️❌️|
-|`bringlifes.com`|️️✅️|
-|`linkfly.me`|✅️|
-|`anlinks.in`|️❌️|
-|`vplinks.in`|✅️|
-|`earn2me.com`|✅️|
-|`adsfly.in`|✅️|
-|`m.narzolinks.click`|✅️|
-|`appurl.io`|✅️|
-|`surl.li`|✅️|
-|`earn2short.in`|✅️|
-|`instantearn.in`|✅️|
-|`linkjust.com`|✅️|
-|`pdiskshortener.com`|✅️|
+| __Shortener Sites__ | __Status__ |__Last Updated__ |
+|:------------------:|:----------:|:----------------:|
+|`adrinolinks.com`|✅️| **01-05-2024**|
+|`adsfly.in`|✅️| **01-05-2024**|
+|`anlinks.in`|️✅️| **22-04-2024**|
+|`appurl.io`|✅️| **01-05-2024**|
+|`bindaaslinks.com`|✅️| **29-04-2024**|
+|`bit.ly` + `tinyurl.com` + `*.short.gy` + `shorturl.ac` + `t.ly`|✅️| **01-05-2024**|
+|`bringlifes.com`|️️⚠️| **01-05-2024**|
+|`dalink.in`|️⚠️| **01-05-2024**|
+|`disk.yandex.ru` + `yandex.com`|✅️| **01-05-2024**|
+|`download.mdiskshortner.link`|✅️| **Unknown**|
+|`droplink.co`|✅️| **Unknown**|
+|`dtglinks.in`|✅️| **Unknown**|
+|`du-link.in` + `dulink.in`|✅️| **Unknown**|
+|`earn.moneykamalo.com`|✅️| **Unknown**|
+|`earn2me.com`|✅️| **Unknown**|
+|`earn2short.in`|✅️| **Unknown**|
+|`earn4link.in`|✅️|**Unknown**|
+|`evolinks.in`|✅| **22-04-2024**|
+|`ez4short.com`|✅️| **Unknown**|
+|`go.lolshort.tech`|❌️| **Unknown**|
+|`gtlinks.me` + `gyanilinks.com`|✅| **03-05-2024**|
+|`indianshortner.in`|✅️| **Unknown**|
+|`indyshare.net`|✅️| **Unknown**|
+|`instantearn.in`|✅️| **Unknown**|
+|`justpaste.it`|✅️| **24-06-2024**|
+|`kpslink.in`|✅️| **30-04-2024**|
+|`krownlinks.me`|✅️| **Unknown**|
+|`link.shorito.com`|❌️| **03-05-2024**|
+|`link.tnlink.in`|️✅️| **23-04-2024**|
+|`link.tnshort.net`|✅️| **04-05-2024**|
+|`link.vipurl.in` + `vipurl.in` + `count.vipurl.in`|✅️| **Unknown**|
+|`link1s.com`|✅️| **Unknown**|
+|`link4earn.com` + `link4earn.in`|✅️| **Unknown**|
+|`linkbanao.com`|❌️| **Unknown**|
+|`linkfly.me`|✅️| **Unknown**|
+|`linkjust.com`|✅️| **Unknown**|
+|`linkpays.in`|✅️| **Unknown**|
+|`linkshortx.in`|✅️| **03-05-2024**|
+|`linksly.co`|✅️| **Unknown**|
+|`linkvertise.com`|️❌️| **Unknown**|
+|`linksxyz.in`|️️✅️| **24-06-2024**|
+|`linkyearn.com`|❌️| **Unknown**|
+|`m.easysky.in`|✅| **23-04-2024**|
+|`m.narzolinks.click`|✅️| **Unknown**|
+|`mdisk.pro`|✅️| **01-05-2024**|
+|`mdiskshortner`|✅| **30-04-2024**|
+|`mediafire.com`|✅️| **24-06-2024**|
+|`modijiurl.com`|️❌️| **01-05-2024**|
+|`moneycase.link`|✅️| **Unknown**|
+|`mplaylink.com`|️❌️| **Unknown**|
+|`omnifly.in.net`|✅️| **Unknown**|
+|`onepagelink.in`|✅️| **Unknown**|
+|`ouo.io` + `ouo.press`|✅️| **Unknown**|
+|`pandaznetwork.com`|✅️| **Unknown**|
+|`pdisk.site`|✅️| **03-05-2024**|
+|`pdiskshortener.com`|✅️| **Unknown**|
+|`pkin.me` + `go.paisakamalo.in`|✅️| **Unknown**|
+|`publicearn.com`|❌️| **01-05-2024**|
+|`rocklinks.net`|✅️| **01-05-2024**|
+|`ronylink.com`|✅️| **24-04-2024**|
+|`rslinks.net`|❌️| **Unknown**|
+|`sheralinks.com`|✅️| **Unknown**|
+|`short.tnvalue.in`|✅️| **Unknown**|
+|`short2url.in`|✅️| **Unknown**|
+|`shortingly.com`|️✅️|️ **Unknown**|
+|`shrdsk.me`|️️✅️| **Unknown**|
+|`shrinke.me`|✅️| **30-04-2024**|
+|`shrinkforearn.xyz`|️❌️| **Unknown**|
+|`sklinks.in` + `sklinks.tech`|✅️| **Unknown**|
+|`surl.li`|✅️| **Unknown**|
+|`sxslink.com`|✅️| **Unknown**|
+|`tamizhmasters.com`|⚠️| **Unknown**|
+|`terabox.*` + `terabox.*` + `nephobox.*` + `4funbox.*` + `mirrobox.*` + `momerybox.*` + `teraboxapp.*`|✅️| **Unknown**|
+|`tglink.in`|✅️| **Unknown**|
+|`tinyfy.in`|✅️| **Unknown**|
+|`try2link.com`|✅️| **18-04-2024**|
+|`tulinks.one` + `go.tulinks.online` + `tulinks.online`|✅️| **Unknown**|
+|`url4earn.in`|✅️| **Unknown**|
+|`urllinkshort.in`|✅️| **Unknown**|
+|`urlsopen.com`|✅️| **Unknown**|
+|`urlspay.in`|✅️| **Unknown**|
+|`v2.kpslink.in`|✅️| **29-04-2024**|
+|`v2links.com`|️❌️| **Unknown**|
+|`viplinks.io`|️⚠️| **Unknown**|
+|`vplinks.in`|✅️| **29-04-2024**|
+|`www.dropbox.com`|✅️| **Unknown**|
+|`xpshort.com` + `push.bdnewsx.com` + `techymozo.com`|❌| **Unknown**|
+|`ziplinker.net`|✅️| **29-04-2024**|
+
 
 ### ***Scrape Sites***
-| __Websites__ | __Status__ |
-|:--------------------:|:----------:|
-|`cinevood.*` **(Page)** |✅️|
-|`toonworld4all.*` **(Page + Episode)** |️❌️|
-|`kayoanime.com` **(Page)**|✅️|
-|`skymovieshd.*`|✅️|
-|`ww1.sharespark.cfd`|✅️|
-|`www.1tamilmv.*` **(Page)**|✅️|
+| __Websites__ | __Status__ |__Last Updated__ |
+|:------------:|:----------:|:----------------:|
+|`cinevood.*` **(Page)** |✅️| **Unknown**|
+|`kayoanime.com` **(Page)**|✅️| **Unknown**|
+|`skymovieshd.*`|✅️| **Unknown**|
+|`toonworld4all.*` **(Page + Episode)** |️❌️| **Unknown**|
+|`ww1.sharespark.cfd`|✅️| **Unknown**|
+|`www.1tamilmv.*` **(Page)**|✅️| **Unknown**|
 
 </details>
 
 ### ***GDrive Sites***
 > _Fast Index Link is Supported for all GD Sites_
 
-| __Websites__ | __Status__ |
-|:--------------------:|:----------:|
-|`new*.gdtot.zip`|️❌️|
-|`new*.filepress.store` + `filebee.xyz` + `onlystream.xyz` + `pressbee.xyz`**( Only Tg Links )**|✅️|
-|`appdrive.*` **(File + Pack)**|✅️|
-|`gdflix.*`**(File + Pack)**|❌️|
-|`hubdrive.lat` **(Instant Link)**|✅️|
-|`katdrive.org` **(Direct Download)**|✅️|
-|`drivefire.co`|✅️|
-|`sharer.pw`|❌|
+<details>
+    <summary>GDrive Sites<sup><kbd>Click Here to Expand</kbd></sup></summary>
+
+| __Websites__ | __Status__ | __Last Updated__ |
+|:------------:|:----------:|:----------------:|
+|`appdrive.*` **(File + Pack)**|✅️|**Unknown**|
+|`drivefire.co`|✅️|**Unknown**|
+|`*.gdflix.*`**(File + Pack)**|❌️|**Unknown**|
+✅️|**Unknown**|
+|`hubdrive.lat` **(Instant Link)**|
+|`katdrive.org` **(Direct Download)**|✅️|**Unknown**|
+|`new*.gdtot.zip`|️❌️| **Unknown**|
+|`new*.filepress.store` + `filebee.xyz` + `onlystream.xyz` + `pressbee.xyz`**( Only Tg Links )**|✅️|**Unknown**|
+|`sharer.pw`|❌|**Unknown**|
+
+</details>
 
 ---
 
 ## ***Deploy Guide***
-1. `Heroku` _(Recommended)_
-    - Use [HK-Loader](https://github.com/SilentDemonSD/HK-Loader) and Follow further Steps.
-    - Use Process Type `worker` to run without any Stop.
+1. `Heroku` or `Koyeb` or `Render` or `Scalingo` or _**More**_ _(Recommended)_
+    - Use [pyTele-Loader](https://github.com/SilentDemonSD/pyTele-Loader) and Follow further Steps.
     - **Variables Values:**
       - `REPO_URL`: https://github.com/SilentDemonSD/FZBypassBot
       - `REPO_BRANCH`: main

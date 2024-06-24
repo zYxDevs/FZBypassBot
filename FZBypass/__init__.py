@@ -26,7 +26,7 @@ class Config:
     API_HASH = getenv("API_HASH", "")
     API_ID = getenv("API_ID", "")
     if BOT_TOKEN == "" or API_HASH == "" or API_ID == "":
-        LOGGER.critical("ENV Missing. Exiting Now...")
+        LOGGER.critical("Variables Missing. Exiting Now...")
         exit(1)
     AUTO_BYPASS = getenv("AUTO_BYPASS", "False").lower() == "true"
     AUTH_CHATS = getenv("AUTH_CHATS", "").split()
@@ -38,7 +38,6 @@ class Config:
     DRIVEFIRE_CRYPT = getenv("DRIVEFIRE_CRYPT", "")
     HUBDRIVE_CRYPT = getenv("HUBDRIVE_CRYPT", "")
     KATDRIVE_CRYPT = getenv("KATDRIVE_CRYPT", "")
-    UPTOBOX_TOKEN = getenv("UPTOBOX_TOKEN", "")
     TERA_COOKIE = getenv("TERA_COOKIE", "")
 
 
